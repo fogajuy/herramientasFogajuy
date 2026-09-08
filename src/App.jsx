@@ -63,6 +63,7 @@ import ContenedorEvaluador from './components/helpers/financieros/formularios/co
 function App() {
   return (
     <Routes>
+        <Route path="/" element={<Navigate to="/home" replace />} />
         <Route path="/home" element={<Home />} />
         <Route path="/simuladorCredito" element={<SimuladorCredito />} />
         <Route path="/simuladorBursatil" element={<SimuladorBursatil />} />
