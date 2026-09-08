@@ -1,0 +1,188 @@
+/* src/styles/simuladorCredito.css */
+
+.simulador-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 1.5rem;
+  font-family: system-ui, -apple-system, sans-serif;
+  color: #1e293b;
+}
+
+.simulador-header {
+  margin-bottom: 2rem;
+  border-bottom: 3px solid #0a2540;
+  padding-bottom: 0.5rem;
+}
+
+.simulador-header h2 {
+  color: #0a2540;
+  margin: 0;
+  font-size: 1.8rem;
+}
+
+.simulador-header p {
+  color: #64748b;
+  margin-top: 0.25rem;
+  font-size: 0.95rem;
+}
+
+/* Grid de Formulario */
+.simulador-form {
+  background-color: #ffffff;
+  padding: 1.5rem;
+  border-radius: 10px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+  border: 1px solid #e2e8f0;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 1.25rem;
+  margin-bottom: 2rem;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+}
+
+.form-group label {
+  font-weight: 600;
+  font-size: 0.88rem;
+  color: #334155;
+}
+
+.form-group input,
+.form-group select {
+  padding: 0.65rem 0.8rem;
+  border: 1px solid #cbd5e1;
+  border-radius: 6px;
+  font-size: 0.95rem;
+  outline: none;
+  transition: border-color 0.2s;
+}
+
+.form-group input:focus,
+.form-group select:focus {
+  border-color: #00d4b2;
+}
+
+/* Tarjeta de Resumen */
+.resumen-card {
+  background-color: #f8fafc;
+  border-left: 4px solid #00d4b2;
+  padding: 1rem 1.5rem;
+  border-radius: 6px;
+  margin-bottom: 1.5rem;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 2rem;
+}
+
+.resumen-item span {
+  display: block;
+  font-size: 0.8rem;
+  color: #64748b;
+  text-transform: uppercase;
+  font-weight: bold;
+}
+
+.resumen-item strong {
+  font-size: 1.2rem;
+  color: #0a2540;
+}
+
+/* Acciones y Botones */
+.simulador-acciones {
+  display: flex;
+  justify-content: flex-end;
+  gap: 1rem;
+  margin-bottom: 1rem;
+}
+
+.btn-export {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.6rem 1.2rem;
+  border: none;
+  border-radius: 6px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  font-size: 0.9rem;
+}
+
+.btn-excel {
+  background-color: #107c41;
+  color: white;
+}
+
+.btn-excel:hover {
+  background-color: #0b5c30;
+}
+
+.btn-pdf {
+  background-color: #d83b01;
+  color: white;
+}
+
+.btn-pdf:hover {
+  background-color: #a82e01;
+}
+
+/* Tabla de Amortización */
+.table-responsive {
+  overflow-x: auto;
+  background-color: #ffffff;
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+  border: 1px solid #e2e8f0;
+}
+
+.tabla-amortizacion {
+  width: 100%;
+  border-collapse: collapse;
+  text-align: right;
+  font-size: 0.9rem;
+}
+
+.tabla-amortizacion th,
+.tabla-amortizacion td {
+  padding: 0.75rem 1rem;
+  border-bottom: 1px solid #e2e8f0;
+}
+
+.tabla-amortizacion th {
+  background-color: #0a2540;
+  color: #ffffff;
+  font-weight: 600;
+  text-align: right;
+}
+
+.tabla-amortizacion th:first-child,
+.tabla-amortizacion td:first-child {
+  text-align: center;
+}
+
+.tabla-amortizacion tr.fila-gracia {
+  background-color: #fffbebfb;
+}
+
+.tabla-amortizacion tr:hover {
+  background-color: #f1f5f9;
+}
+
+.tabla-amortizacion tfoot tr {
+  background-color: #f1f5f9;
+  font-weight: bold;
+  border-top: 2px solid #0a2540;
+}
+
+.badge-gracia {
+  background-color: #fef3c7;
+  color: #92400e;
+  padding: 0.15rem 0.4rem;
+  border-radius: 4px;
+  font-size: 0.75rem;
+  margin-left: 0.4rem;
+}

@@ -1,0 +1,290 @@
+/* src/styles/simuladorBursatil.css */
+
+.bursatil-container {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 1.5rem;
+  font-family: system-ui, -apple-system, sans-serif;
+  color: #1e293b;
+}
+
+.bursatil-header {
+  margin-bottom: 1.5rem;
+  border-bottom: 3px solid #0a2540;
+  padding-bottom: 0.5rem;
+}
+
+.bursatil-header h2 {
+  color: #0a2540;
+  margin: 0;
+  font-size: 1.8rem;
+}
+
+.bursatil-header p {
+  color: #64748b;
+  margin-top: 0.25rem;
+  font-size: 0.95rem;
+}
+
+/* Card de Formulario e Ingreso de Líneas */
+.bursatil-card {
+  background-color: #ffffff;
+  padding: 1.25rem;
+  border-radius: 10px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+  border: 1px solid #e2e8f0;
+  margin-bottom: 1.5rem;
+}
+
+.bursatil-card h3 {
+  margin-top: 0;
+  margin-bottom: 1rem;
+  font-size: 1.1rem;
+  color: #0a2540;
+}
+
+.form-grid-bursatil {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 1rem;
+  align-items: flex-end;
+}
+
+.form-group-b {
+  display: flex;
+  flex-direction: column;
+  gap: 0.3rem;
+}
+
+.form-group-b label {
+  font-weight: 600;
+  font-size: 0.82rem;
+  color: #334155;
+}
+
+.form-group-b input,
+.form-group-b select {
+  padding: 0.55rem 0.7rem;
+  border: 1px solid #cbd5e1;
+  border-radius: 6px;
+  font-size: 0.9rem;
+  outline: none;
+}
+
+.form-group-b input:focus,
+.form-group-b select:focus {
+  border-color: #00d4b2;
+}
+
+.btn-add-linea {
+  background-color: #0a2540;
+  color: white;
+  border: none;
+  padding: 0.65rem 1rem;
+  border-radius: 6px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background 0.2s;
+  height: 38px;
+}
+
+.btn-add-linea:hover {
+  background-color: #00d4b2;
+  color: #0a2540;
+}
+
+/* Tabla de Instrumentos Cargados */
+.table-bursatil-responsive {
+  overflow-x: auto;
+  margin-bottom: 1.5rem;
+  border: 1px solid #e2e8f0;
+  border-radius: 8px;
+  background-color: white;
+}
+
+.tabla-bursatil {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.85rem;
+  white-space: nowrap;
+}
+
+.tabla-bursatil th {
+  background-color: #0a2540;
+  color: #ffffff;
+  padding: 0.6rem 0.8rem;
+  text-align: right;
+  font-weight: 600;
+}
+
+.tabla-bursatil th:first-child,
+.tabla-bursatil td:first-child {
+  text-align: center;
+}
+
+.tabla-bursatil td {
+  padding: 0.6rem 0.8rem;
+  border-bottom: 1px solid #f1f5f9;
+  text-align: right;
+}
+
+.btn-delete-linea {
+  background: #ef4444;
+  color: white;
+  border: none;
+  padding: 0.2rem 0.5rem;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+/* Tarjetas de Resumen Global */
+.resumen-bursatil-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 1.25rem;
+  margin-bottom: 1.5rem;
+}
+
+.resumen-b-card {
+  background-color: #f8fafc;
+  border-left: 4px solid #00d4b2;
+  padding: 1.2rem;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.03);
+}
+
+.resumen-b-card h4 {
+  margin: 0 0 0.8rem 0;
+  font-size: 0.95rem;
+  color: #0a2540;
+  text-transform: uppercase;
+}
+
+.resumen-b-row {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 0.5rem;
+  font-size: 0.9rem;
+}
+
+.resumen-b-row.total-destacado {
+  border-top: 2px solid #cbd5e1;
+  padding-top: 0.5rem;
+  margin-top: 0.5rem;
+  font-weight: bold;
+  font-size: 1.05rem;
+  color: #0a2540;
+}
+
+/* Botones Exportar */
+.bursatil-acciones {
+  display: flex;
+  justify-content: flex-end;
+  gap: 1rem;
+}
+
+.btn-bursatil-excel {
+  background-color: #107c41;
+  color: white;
+}
+
+.btn-bursatil-pdf {
+  background-color: #d83b01;
+  color: white;
+}
+
+
+/* Contenedor Principal Centrado */
+.bursatil-container {
+  max-width: 1400px;
+  width: 100%;
+  margin: 0 auto; /* Centra horizontalmente todo el bloque */
+  padding: 20px;
+  box-sizing: border-box;
+}
+
+/* Encabezados y Secciones Centradas */
+.bursatil-header,
+.bursatil-card,
+.resumen-bursatil-grid,
+.bursatil-acciones {
+  width: 100%;
+  margin-left: auto;
+  margin-right: auto;
+  box-sizing: border-box;
+}
+
+/* Formulario Grid */
+.form-grid-bursatil {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 15px;
+  align-items: end;
+}
+
+/* Tabla - Manejo de Overflow sin Desplazar la Página */
+.table-bursatil-responsive {
+  width: 100%;
+  overflow-x: auto; /* Permite scroll interno solo en la tabla si no cabe */
+  margin: 20px 0;
+  border-radius: 8px;
+  box-sizing: border-box;
+}
+
+.tabla-bursatil {
+  width: 100%;
+  border-collapse: collapse;
+  text-align: left; /* O center según tu preferencia */
+}
+
+/* Alineaciones específicas de columnas */
+.tabla-bursatil th,
+.tabla-bursatil td {
+  padding: 10px 12px;
+  white-space: nowrap; /* Evita saltos de línea feos */
+}
+
+.tabla-bursatil th:nth-child(2),
+.tabla-bursatil th:nth-child(4),
+.tabla-bursatil th:nth-child(5),
+.tabla-bursatil th:nth-child(7),
+.tabla-bursatil td:nth-child(2),
+.tabla-bursatil td:nth-child(4),
+.tabla-bursatil td:nth-child(5),
+.tabla-bursatil td:nth-child(7) {
+  text-align: center; /* Fechas y días centrados */
+}
+
+.tabla-bursatil th:nth-child(3),
+.tabla-bursatil th:nth-child(8),
+.tabla-bursatil th:nth-child(9),
+.tabla-bursatil th:nth-child(10),
+.tabla-bursatil th:nth-child(11),
+.tabla-bursatil th:nth-child(12),
+.tabla-bursatil th:nth-child(13),
+.tabla-bursatil th:nth-child(14),
+.tabla-bursatil td:nth-child(3),
+.tabla-bursatil td:nth-child(8),
+.tabla-bursatil td:nth-child(9),
+.tabla-bursatil td:nth-child(10),
+.tabla-bursatil td:nth-child(11),
+.tabla-bursatil td:nth-child(12),
+.tabla-bursatil td:nth-child(13),
+.tabla-bursatil td:nth-child(14) {
+  text-align: right; /* Importes monetarios alineados a la derecha */
+}
+
+/* Resumen Grid Centrado */
+.resumen-bursatil-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: 20px;
+}
+
+/* Botones de Acción */
+.bursatil-acciones {
+  display: flex;
+  justify-content: center; /* Centra los botones de exportación */
+  gap: 15px;
+  margin-top: 25px;
+}

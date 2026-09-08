@@ -1,0 +1,96 @@
+/* src/components/Home.css */
+
+.home-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2rem;
+  padding: 2rem 1rem;
+}
+
+.home-hero {
+  background-color: #ffffff;
+  border-radius: 12px;
+  padding: 2.5rem;
+  max-width: 900px;
+  width: 100%;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+  border-top: 5px solid #0a2540;
+}
+
+.home-hero h2 {
+  color: #0a2540;
+  margin-top: 0;
+  font-size: 2rem;
+}
+
+.home-hero p {
+  color: #4a5568;
+  font-size: 1.1rem;
+  line-height: 1.6;
+}
+
+.home-link {
+  display: inline-block;
+  margin-top: 1rem;
+  color: #008080;
+  font-weight: bold;
+  text-decoration: none;
+  font-size: 1rem;
+  border-bottom: 2px solid #008080;
+  padding-bottom: 2px;
+  transition: color 0.2s ease;
+}
+
+.home-link:hover {
+  color: #0a2540;
+  border-color: #0a2540;
+}
+
+.home-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 1.5rem;
+  max-width: 900px;
+  width: 100%;
+}
+
+.home-card {
+  background-color: #ffffff;
+  border-radius: 10px;
+  padding: 1.8rem;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+  border: 1px solid #e2e8f0;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.home-card h3 {
+  color: #0a2540;
+  margin-top: 0;
+  font-size: 1.3rem;
+}
+
+.home-card p {
+  color: #64748b;
+  font-size: 0.95rem;
+  line-height: 1.5;
+}
+
+.home-card-btn {
+  margin-top: 1.5rem;
+  background-color: #0a2540;
+  color: #ffffff;
+  border: none;
+  padding: 0.75rem 1.2rem;
+  border-radius: 6px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+.home-card-btn:hover {
+  background-color: #00d4b2;
+  color: #0a2540;
+}

@@ -1,0 +1,160 @@
+.inicio-container {
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 30px 20px;
+  font-family: Arial, sans-serif;
+  color: #1a252c;
+}
+
+.inicio-header {
+  text-align: center;
+  margin-bottom: 35px;
+}
+
+.inicio-header h1 {
+  color: #0a2540;
+  font-size: 1.8rem;
+  margin-bottom: 10px;
+}
+
+.inicio-header p {
+  color: #556987;
+  font-size: 1.05rem;
+  max-width: 750px;
+  margin: 0 auto;
+}
+
+/* Grilla de 4 pasos */
+.inicio-pasos-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 15px;
+  margin-bottom: 30px;
+}
+
+.paso-card {
+  background: #f8fafc;
+  border: 1px solid #e2e8f0;
+  border-radius: 8px;
+  padding: 20px;
+  text-align: center;
+}
+
+.paso-numero {
+  width: 32px;
+  height: 32px;
+  background-color: #0a2540;
+  color: white;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: bold;
+  margin: 0 auto 12px auto;
+}
+
+.paso-card h3 {
+  font-size: 0.95rem;
+  color: #0a2540;
+  margin-bottom: 8px;
+}
+
+.paso-card p {
+  font-size: 0.85rem;
+  color: #64748b;
+  margin: 0;
+}
+
+/* Alerta de recomendaciones */
+.inicio-alerta {
+  background-color: #eff6ff;
+  border-left: 4px solid #2563eb;
+  padding: 15px 20px;
+  border-radius: 6px;
+  margin-bottom: 35px;
+  font-size: 0.9rem;
+  color: #1e40af;
+}
+
+.inicio-alerta ul {
+  margin: 8px 0 0 20px;
+  padding: 0;
+}
+
+.inicio-alerta li {
+  margin-bottom: 4px;
+}
+
+/* Formulario */
+.inicio-form {
+  background: white;
+  border: 1px solid #e2e8f0;
+  border-radius: 10px;
+  padding: 25px;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+}
+
+.inicio-form h2 {
+  font-size: 1.2rem;
+  color: #0a2540;
+  margin-top: 0;
+  margin-bottom: 20px;
+}
+
+.form-group-radio {
+  display: flex;
+  gap: 25px;
+  margin-bottom: 20px;
+}
+
+.radio-label {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-weight: bold;
+  cursor: pointer;
+  font-size: 0.95rem;
+}
+
+.form-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 15px;
+  margin-bottom: 25px;
+}
+
+.form-field {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.form-field label {
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: #475569;
+}
+
+.form-field input {
+  padding: 10px;
+  border: 1px solid #cbd5e1;
+  border-radius: 6px;
+  font-size: 0.9rem;
+}
+
+.btn-comenzar {
+  width: 100%;
+  background-color: #0a2540;
+  color: white;
+  border: none;
+  padding: 14px;
+  font-size: 1rem;
+  font-weight: bold;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.btn-comenzar:hover {
+  background-color: #1e3a8a;
+}

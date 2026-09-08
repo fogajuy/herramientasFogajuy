@@ -1,0 +1,247 @@
+/* personaFisica.css */
+
+.fisica-container {
+  min-height: 100vh;
+  background-color: #f8fafc;
+  color: #1e293b;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+  padding-bottom: 100px; /* Espacio para el footer flotante */
+}
+
+/* Barra de Progreso */
+.progreso-section {
+  background-color: #ffffff;
+  padding: 20px 40px;
+  border-bottom: 1px solid #e2e8f0;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+  position: sticky;
+  top: 0;
+  z-index: 10;
+}
+
+.progreso-info {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 10px;
+  font-size: 0.95rem;
+  color: #475569;
+}
+
+.progreso-info strong {
+  color: #0f172a;
+}
+
+.porcentaje {
+  font-weight: 700;
+  color: #2563eb;
+  font-size: 1.1rem;
+}
+
+.bar-container {
+  width: 100%;
+  height: 10px;
+  background-color: #e2e8f0;
+  border-radius: 999px;
+  overflow: hidden;
+}
+
+.bar-fill {
+  height: 100%;
+  background: linear-gradient(90deg, #2563eb 0%, #1d4ed8 100%);
+  transition: width 0.4s ease-in-out;
+}
+
+/* Checklist y Grilla de Requisitos */
+.checklist-container {
+  max-width: 1200px;
+  margin: 30px auto;
+  padding: 0 20px;
+}
+
+.checklist-container h3 {
+  font-size: 1.5rem;
+  color: #0f172a;
+  margin-bottom: 6px;
+}
+
+.checklist-subtext {
+  color: #64748b;
+  font-size: 0.9rem;
+  margin-bottom: 24px;
+}
+
+.requisitos-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+  gap: 20px;
+}
+
+/* Tarjetas de Requisito */
+.requisito-card {
+  background-color: #ffffff;
+  border: 1px solid #e2e8f0;
+  border-radius: 12px;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
+}
+
+.requisito-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.05);
+}
+
+.requisito-card.completado {
+  border-color: #bbf7d0;
+  background-color: #f0fdf4;
+}
+
+.requisito-head {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin-bottom: 10px;
+}
+
+.status-badge {
+  align-self: flex-start;
+  font-size: 0.75rem;
+  font-weight: 600;
+  padding: 4px 10px;
+  border-radius: 999px;
+}
+
+.status-badge.pending {
+  background-color: #f1f5f9;
+  color: #64748b;
+}
+
+.status-badge.ok {
+  background-color: #dcfce7;
+  color: #15803d;
+}
+
+.requisito-card h4 {
+  font-size: 1.05rem;
+  color: #0f172a;
+  margin: 0;
+  line-height: 1.3;
+}
+
+.requisito-desc {
+  font-size: 0.85rem;
+  color: #64748b;
+  margin-bottom: 16px;
+  flex-grow: 1;
+}
+
+/* Lista de Archivos Adjuntos (Chips) */
+.archivos-lista {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-bottom: 16px;
+}
+
+.file-chip {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  background-color: #ffffff;
+  border: 1px solid #cbd5e1;
+  border-radius: 6px;
+  padding: 4px 8px;
+  font-size: 0.8rem;
+  max-width: 100%;
+}
+
+.file-name {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 180px;
+  color: #334155;
+}
+
+.btn-eliminar-file {
+  background: none;
+  border: none;
+  color: #ef4444;
+  cursor: pointer;
+  font-weight: bold;
+  padding: 0 2px;
+  font-size: 0.85rem;
+  line-height: 1;
+}
+
+.btn-eliminar-file:hover {
+  color: #b91c1c;
+}
+
+/* Área de Carga */
+.upload-area {
+  margin-top: auto;
+}
+
+.btn-upload {
+  display: block;
+  width: 100%;
+  text-align: center;
+  padding: 10px;
+  border: 1px dashed #94a3b8;
+  border-radius: 8px;
+  background-color: #f8fafc;
+  color: #334155;
+  font-size: 0.85rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background-color 0.2s ease, border-color 0.2s ease;
+}
+
+.btn-upload:hover {
+  background-color: #f1f5f9;
+  border-color: #2563eb;
+  color: #2563eb;
+}
+
+/* Footer Flotante con Botón de Acción */
+.fisica-footer {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background-color: #ffffff;
+  padding: 16px 20px;
+  border-top: 1px solid #e2e8f0;
+  box-shadow: 0 -4px 6px -1px rgba(0, 0, 0, 0.05);
+  display: flex;
+  justify-content: center;
+  z-index: 20;
+}
+
+.btn-generar-expediente {
+  background-color: #2563eb;
+  color: #ffffff;
+  font-size: 1rem;
+  font-weight: 600;
+  padding: 14px 28px;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background-color 0.2s ease, transform 0.1s ease;
+  box-shadow: 0 4px 6px -1px rgba(37, 99, 235, 0.2);
+}
+
+.btn-generar-expediente:hover:not(:disabled) {
+  background-color: #1d4ed8;
+  transform: translateY(-1px);
+}
+
+.btn-generar-expediente:disabled {
+  background-color: #94a3b8;
+  cursor: not-allowed;
+  box-shadow: none;
+}

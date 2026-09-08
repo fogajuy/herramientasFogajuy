@@ -1,0 +1,48 @@
+/* src/components/Navbar.css */
+
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #0a2540; /* Azul institucional FOGAJUY */
+  padding: 1rem 2rem;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+  color: #ffffff;
+}
+
+.navbar-logo {
+  font-size: 1.5rem;
+  font-weight: bold;
+  letter-spacing: 1px;
+  margin: 0;
+  cursor: pointer;
+  user-select: none;
+}
+
+.navbar-menu {
+  display: flex;
+  gap: 1rem;
+}
+
+.navbar-btn {
+  background-color: transparent;
+  color: #ffffff;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  padding: 0.5rem 1.2rem;
+  border-radius: 6px;
+  font-size: 0.95rem;
+  font-weight: normal;
+  cursor: pointer;
+  transition: all 0.2s ease-in-out;
+}
+
+.navbar-btn:hover {
+  background-color: rgba(255, 255, 255, 0.1);
+}
+
+.navbar-btn.active {
+  background-color: #00d4b2; /* Color destacado activo */
+  color: #0a2540;
+  border: none;
+  font-weight: bold;
+}

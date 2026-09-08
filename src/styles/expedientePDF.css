@@ -1,0 +1,89 @@
+/* styles/expedientePDF.css */
+
+.expediente-container {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  background-color: #f4f6f9;
+}
+
+/* Barra de acciones superior */
+.expediente-actions-bar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem 2rem;
+  background-color: #ffffff;
+  border-bottom: 1px solid #e2e8f0;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+}
+
+.expediente-actions-bar h3 {
+  margin: 0;
+  font-size: 1.2rem;
+  color: #1e293b;
+  font-weight: 600;
+}
+
+/* Botones */
+.btn-volver {
+  background-color: #f1f5f9;
+  color: #475569;
+  border: 1px solid #cbd5e1;
+  padding: 0.5rem 1rem;
+  border-radius: 6px;
+  cursor: pointer;
+  font-weight: 500;
+  transition: all 0.2s ease;
+}
+
+.btn-volver:hover {
+  background-color: #e2e8f0;
+  color: #0f172a;
+}
+
+.btn-descargar {
+  background-color: #2563eb;
+  color: #ffffff;
+  border: none;
+  padding: 0.6rem 1.2rem;
+  border-radius: 6px;
+  cursor: pointer;
+  font-weight: 600;
+  transition: background-color 0.2s ease;
+}
+
+.btn-descargar:hover {
+  background-color: #1d4ed8;
+}
+
+/* Visor del PDF */
+.pdf-viewer-container {
+  flex: 1;
+  padding: 1.5rem 2rem;
+  display: flex;
+  justify-content: center;
+}
+
+.pdf-viewer-container iframe {
+  border: 1px solid #cbd5e1;
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  background-color: #ffffff;
+}
+
+/* Pantalla de error si no entra con PDF */
+.expediente-error-container {
+  min-height: 100vh;
+  background-color: #f8fafc;
+}
+
+.expediente-error-container button {
+  margin-top: 1rem;
+  padding: 0.5rem 1rem;
+  background-color: #0284c7;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
