@@ -517,9 +517,9 @@ import { PDFDocument, rgb, StandardFonts, degrees } from 'pdf-lib';
 import { useLocation, useNavigate } from 'react-router-dom';
 import Navbar from '../navBar/navBar';
 import ModalNotaSolicitudFisica from '../helpers/modalNotaSolicitudFisica';
-import ModalDDJJPEPFisica from '../helpers/ModalDDJJPEPFisica';
+import ModalDDJJPEPFisica from '../helpers/modalDDJJPEPFisica';
 import ModalFlujoFondos from '../helpers/modalFlujoFondos';
-import ModalInformacionAdicional from '../helpers/ModalInformacionAdicional';
+import ModalInformacionAdicional from '../helpers/modalInformacionAdicional';
 import '../../styles/personaFisica.css';
 
 const REQUISITOS_FISICA = [

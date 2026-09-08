@@ -768,9 +768,9 @@ import ModalDDJJGrupoEconomico from '../helpers/modalDDJJGrupoEconomico';
 import ModalDDJJDeudaPostBalance from '../helpers/modalDDJJDeudaPostBalance';
 import ModalFlujoFondos from '../helpers/modalFlujoFondos';
 import ModalInformacionAdicional from '../helpers/modalInformacionAdicional';
-import ModalNominaAdministradores from '../helpers/ModalNominaAdministradores';
+import ModalNominaAdministradores from '../helpers/modalNominaAdministradores';
 import ModalDDJJPEP from '../helpers/modalDDJJPEP';
-import ModalDDJJLicitudFondos from '../helpers/ModalDDJJLicitudFondos';
+import ModalDDJJLicitudFondos from '../helpers/modalDDJJLicitudFondos';
 import ModalBeneficiarioFinal from '../helpers/modalDDJJBeneficiarioFinal';
 
 import Navbar from '../navBar/navBar';

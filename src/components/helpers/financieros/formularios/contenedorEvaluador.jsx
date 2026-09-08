@@ -124,7 +124,7 @@ import FormularioIngresos from './formularioIngresos';
 import FormularioEgresos from './formularioEgresos';
 import FormularioInversiones from './formularioInversiones';
 import FormularioFinanciacion from './formularioFinanciacion';
-import FlujoDeCaja from './FlujoDeCaja';
+import FlujoDeCaja from './flujoDeCaja';
 
 // Definimos el estado inicial fuera del componente (o al principio) para poder reusarlo al resetear
 const hoy = new Date().toISOString().split('T')[0];
