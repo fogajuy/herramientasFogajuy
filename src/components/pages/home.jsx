@@ -65,7 +65,7 @@ export default function Home() {
           </div>
           <button 
             className="home-card-btn" 
-            onClick={() => navigate("/armadorExpediente")}
+            onClick={() => navigate("/pantallaInicio")}
           >
             Ir al Expediente
           </button>
