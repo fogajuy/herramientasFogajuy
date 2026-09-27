@@ -17,6 +17,8 @@
   margin: 0;
   cursor: pointer;
   user-select: none;
+  color: #ffffff;
+  margin-right: 10px;
 }
 
 .navbar-menu {

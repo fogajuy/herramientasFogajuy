@@ -56,6 +56,8 @@ import PersonaFisica from './components/expediente/personaFisica';
 import ExpedientePDF from './components/expediente/expedientePDF';
 import EvaluacionFinanciera from './components/expediente/evaluacionFinanciera';
 import ContenedorEvaluador from './components/helpers/financieros/formularios/contenedorEvaluador';
+import ProcesoEvaluacion from './components/helpers/financieros/formularios/procesoEvaluacion';
+import InformeEvaluacion from './components/helpers/financieros/formularios/informeEvaluacion';
 
 // 🧹 BORRAMOS LAS IMPORTACIONES DE LOS FORMULARIOS INDIVIDUALES
 // Porque ahora solo se importan y usan adentro de ContenedorEvaluador.jsx
@@ -71,10 +73,11 @@ function App() {
         <Route path="/personaJurica" element={<PersonaJuridica />} />
         <Route path="/personaFisica" element={<PersonaFisica />} />
         <Route path="/expedientePDF" element={<ExpedientePDF />} />
-        <Route path="/evaluacionFinanciera" element={<EvaluacionFinanciera />} />
+        <Route path="/evaluacionFinanciera" element={<InformeEvaluacion />} />
         
         {/* 🏆 ESTA ES LA ÚNICA RUTA QUE NECESITAS PARA TODO EL MÓDULO */}
         <Route path="/contenedorEvaluador" element={<ContenedorEvaluador />} />
+        <Route path="/procesoEvaluacion" element={<ProcesoEvaluacion />} />
       </Routes>
   )
 }

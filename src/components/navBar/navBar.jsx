@@ -20,13 +20,13 @@ export default function Navbar({ vistaActual, setVistaActual }) {
           className={`navbar-btn ${vistaActual === 'simulador' ? 'active' : ''}`}
           onClick={() => navigate("/simuladorCredito")}
         >
-          SIMULADOR CRÉDITO
+          SIMULADOR FINANCIACIÓN
         </button>
         <button
           className={`navbar-btn ${vistaActual === 'simulador' ? 'active' : ''}`}
           onClick={() => navigate("/simuladorBursatil")}
         >
-          SIMULADOR BURSÁTIL
+          SIMULADOR ECHEQS / PAGARÉ
         </button>
         <button
           className={`navbar-btn ${vistaActual === 'expediente' ? 'active' : ''}`}
@@ -34,6 +34,12 @@ export default function Navbar({ vistaActual, setVistaActual }) {
         >
           EXPEDIENTE
         </button>
+        {/* <button
+          className={`navbar-btn ${vistaActual === 'expediente' ? 'active' : ''}`}
+          onClick={() => navigate("/procesoEvaluacion")}
+        >
+          EVALUACION
+        </button> */}
       </div>
     </nav>
   );

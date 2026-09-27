@@ -188,35 +188,6 @@ export default function SimuladorBursatil() {
     setInstrumentos(instrumentos.filter((i) => i.id !== id));
   };
 
-//   const exportarExcel = () => {
-//     const filasExcel = calculos.lineas.map((l) => ({
-//       'Fecha Op': l.fechaOp,
-//       'Importe Nominal': l.monto,
-//       'Fecha Venc': l.fechaVenc,
-//       'Fecha Pago Real': l.fechaPagoStr,
-//       'Tasa %': l.tasa,
-//       'Gob Jujuy': l.esGobJujuy,
-//       'Moneda': l.moneda,
-//       'Días Vto': l.diasVto,
-//       'Días Pago': l.diasPago,
-//       'Descuento Operado': l.descuentoOperado,
-//       'Arancel ALYC (0.06%)': l.arancelAlyc,
-//       'Comisión ALYC (3% Prorrateado)': l.comisionAlyc3,
-//       'Derecho Mercado': l.derechoMercado,
-//       'IVA Mercado (21%)': l.ivaMercado,
-//       'Neto Cta. Comitente': l.resultadoDescuento,
-//       'Comisión SGR %': `${l.tasaSgrPct}%`,
-//       'Comisión SGR ($)': l.comisionSgr,
-//       'Neto Resultante Socio': l.netoResultante
-//     }));
-
-//     const worksheet = XLSX.utils.json_to_sheet(filasExcel);
-//     const workbook = XLSX.utils.book_new();
-//     XLSX.utils.book_append_sheet(workbook, worksheet, 'Liquidacion Bursatil');
-//     XLSX.writeFile(workbook, `FOGAJUY_Simulacion_Bursatil.xlsx`);
-//   };
-
-
   const exportarExcel = () => {
     // 1. Filas de cada instrumento
     const filasExcel = calculos.lineas.map((l) => ({
@@ -260,44 +231,6 @@ export default function SimuladorBursatil() {
     XLSX.utils.book_append_sheet(workbook, worksheet, 'Liquidacion Bursatil');
     XLSX.writeFile(workbook, `FOGAJUY_Simulacion_Bursatil.xlsx`);
   };
-
-//   const exportarPDF = () => {
-//     const doc = new jsPDF('landscape');
-
-//     doc.setFontSize(15);
-//     doc.setTextColor(10, 37, 64);
-//     doc.text('FOGAJUY - Fondo de Garantías de Jujuy', 14, 15);
-//     doc.setFontSize(11);
-//     doc.text('Proyección de Descuento de Valores en Mercado de Capitales', 14, 22);
-
-//     const bodyPDF = calculos.lineas.map((l) => [
-//       l.fechaOp,
-//       formatoMoneda(l.monto, l.moneda),
-//       l.fechaVenc,
-//       l.fechaPagoStr,
-//       `${l.tasa}%`,
-//       `${l.diasPago}d`,
-//       formatoMoneda(l.descuentoOperado, l.moneda),
-//       formatoMoneda(l.arancelAlyc, l.moneda),
-//       formatoMoneda(l.comisionAlyc3, l.moneda),
-//       formatoMoneda(l.ivaMercado, l.moneda),
-//       formatoMoneda(l.resultadoDescuento, l.moneda),
-//       formatoMoneda(l.comisionSgr, l.moneda),
-//       formatoMoneda(l.netoResultante, l.moneda)
-//     ]);
-
-//     autoTable(doc, {
-//       startY: 28,
-//       head: [['Fecha Op', 'Nominal', 'F. Venc', 'F. Pago', 'TNA', 'Días', 'Desc. Operado', 'Arancel 0.06%', 'Comis. ALYC 3%', 'IVA Merc.', 'Neto Comitente', 'Comis. SGR', 'Neto Resultante']],
-//       body: bodyPDF,
-//       theme: 'striped',
-//       headStyles: { fillColor: [10, 37, 64], halign: 'right' },
-//       styles: { fontSize: 7.5, halign: 'right' },
-//       columnStyles: { 0: { halign: 'center' }, 2: { halign: 'center' }, 3: { halign: 'center' } }
-//     });
-
-//     doc.save('FOGAJUY_Simulacion_Bursatil.pdf');
-//   };
 
 
   const exportarPDF = () => {
@@ -392,8 +325,8 @@ export default function SimuladorBursatil() {
       <Navbar />
 
       <header className="bursatil-header">
-        <h2>Simulador Bursátil - Descuento de Valores</h2>
-        <p>Proyección de liquidación de Cheques, Echeqs y Pagarés en Mercado de Capitales (FOGAJUY).</p>
+        <h2>Simulador Bursátil - Descuento de Valores Segmento Avalado MAV</h2>
+        <p>Proyección de liquidación de Cheques, Echeqs y Pagarés en Mercado de Capitales avalados por FOGAJUY.</p>
       </header>
 
       {/* Formulario */}

@@ -1,0 +1,36 @@
+/* Estilos complementarios para impresión y exportación a PDF (Paso 7) */
+
+@media print {
+    body {
+        background-color: white !important;
+        color: #000000 !important;
+        margin: 0;
+        padding: 0;
+    }
+
+    /* Eliminar sombras y márgenes excesivos al imprimir */
+    .print\:shadow-none {
+        box-shadow: none !important;
+    }
+
+    .print\:p-0 {
+        padding: 0 !important;
+    }
+
+    /* Asegurar que las secciones y párrafos no se corten bruscamente entre páginas */
+    div, p, ul, li {
+        page-break-inside: avoid;
+        break-inside: avoid;
+    }
+
+    h1, h2, h3 {
+        page-break-after: avoid;
+        break-after: avoid;
+    }
+}
+
+/* Estilos tipográficos institucionales opcionales */
+.informe-evaluacion {
+    font-family: 'Times New Roman', Times, Georgia, serif; /* Tipografía formal sugerida para expedientes */
+    color: #1a1a1a;
+}

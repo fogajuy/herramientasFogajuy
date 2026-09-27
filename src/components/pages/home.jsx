@@ -28,24 +28,24 @@ export default function Home() {
       <div className="home-grid">
         <article className="home-card">
           <div>
-            <h3>Simulador de Financiación Crédito</h3>
+            <h3>Simulador de Financiación Crédito de Agentes Financieros</h3>
             <p>
-              Calcula montos, esquemas de amortización y proyecciones financieras.
+              Calcula montos, esquemas de amortización y proyecciones financieras de tus Agentes Financieros.
             </p>
           </div>
           <button 
             className="home-card-btn" 
             onClick={() => navigate("/simuladorCredito")}
           >
-            Ir al Simulador Crédito
+            Ir al Simulador Financiación
           </button>
         </article>
 
         <article className="home-card">
           <div>
-            <h3>Simulador de Financiación Descuento Echeqs-Pagaré</h3>
+            <h3>Simulador de Financiación Descuento Echeqs-Pagaré Segmento Avalado MAV</h3>
             <p>
-              Calcula montos y proyecciones financieras.
+              Calcula montos y proyecciones financieras de tu ALIC.
             </p>
           </div>
           <button 
@@ -70,7 +70,7 @@ export default function Home() {
             Ir al Expediente
           </button>
         </article>
-        <article className="home-card">
+        {/* <article className="home-card">
           <div>
             <h3>Evaluación Financiera</h3>
             <p>
@@ -79,11 +79,11 @@ export default function Home() {
           </div>
           <button 
             className="home-card-btn" 
-            onClick={() => navigate("/evaluacionFinanciera")}
+            onClick={() => navigate("/procesoEvaluacion")}
           >
             Ir a la Evaluación Financiera
           </button>
-        </article>
+        </article> */}
       </div>
     </div>
   );

@@ -224,7 +224,7 @@ export default function SimuladorCredito() {
 
       <header className="simulador-header">
         <h2>Simulador de Financiación de Crédito</h2>
-        <p>Proyección de cuotas, intereses e impuestos para líneas de garantía FOGAJUY.</p>
+        <p>Proyección de cuotas, intereses e impuestos para líneas de garantía avaladas por FOGAJUY.</p>
       </header>
 
       {/* Formulario de Parámetros */}
