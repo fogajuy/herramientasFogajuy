@@ -348,7 +348,7 @@ export default function ModalDDJJGrupoEconomico({
   return (
     <div className="modal-backdrop" style={{ position: 'fixed', inset: 0, backgroundColor: 'rgba(0,0,0,0.5)', display: 'flex', justifyContent: 'center', alignItems: 'center', zIndex: 1000 }}>
       <div className="modal-content" style={{ backgroundColor: '#fff', padding: '24px', borderRadius: '8px', width: '92%', maxWidth: '850px', maxHeight: '90vh', overflowY: 'auto' }}>
-        <h2 style={{ marginTop: 0, color: '#0284c7' }}>Declaración Jurada - Grupo Económico (Ítem 7)</h2>
+        <h2 style={{ marginTop: 0, color: '#0284c7' }}>Declaración Jurada - Grupo Económico (Ítem 10)</h2>
 
         {/* 1. Datos Empresa */}
         <fieldset style={{ border: '1px solid #cbd5e1', borderRadius: '6px', padding: '12px', marginBottom: '16px' }}>

@@ -23,31 +23,29 @@ const REQUISITOS_JURIDICA = [
   { id: 3, titulo: "3. Contrato Social", descripcion: "Fotocopia de contrato social y sus modificaciones (certificada y legalizada)." },
   { id: 4, titulo: "4. Acta de Designación", descripcion: "Fotocopia de acta de designación de directorio (certificada y legalizada)." },
   { id: 5, titulo: "5. Poder del Representante Legal", descripcion: "Fotocopia de poder otorgado al representante legal (certificada y legalizada)." },
-  { id: 6, titulo: "6. Acta Trámite FOGAJUY", descripcion: "Fotocopia de acta autorizando trámite ante FOGAJUY, firma de convenio y conformación de contragarantías (certificada y legalizada)." },
-  { id: 7, titulo: "7. DDJJ Grupo Económico", descripcion: "Declaración Jurada de Grupo Económico." },
-  { id: 8, titulo: "8. DDJJ Ingresos y Deudas Post Balances", descripcion: "Declaración Jurada de Ingresos y Deudas Post Balances." },
-  { id: 9, titulo: "9. Constancia AFIP", descripcion: "Inscripción en AFIP vigente." },
-  { id: 10, titulo: "10. Constancia Rentas", descripcion: "Inscripción provincial / Rentas." },
-  { id: 11, titulo: "11. Constancia Regularización Fiscal Rentas", descripcion: "Certificado de libre deuda o regularización." },
-  { id: 12, titulo: "12. DDJJ IIBB / Convenio (Últimos 12)", descripcion: "Declaraciones juradas de Ingresos Brutos/Convenio Multilateral del último año." },
-  { id: 13, titulo: "13. DDJJ Ganancias (Últimos 2)", descripcion: "Declaraciones juradas de Ganancias presentadas." },
-  { id: 14, titulo: "14. DDJJ Acciones / Bienes (Últimos 2)", descripcion: "Declaraciones de Acciones y/o Bienes Personales." },
-  { id: 15, titulo: "15. Flujo de Fondos", descripcion: "Proyección por plazo igual o superior a la vida del crédito." },
-  { id: 16, titulo: "16. Información Adicional", descripcion: "Planos, fotos, presupuestos, etc." },
-  { id: 17, titulo: "17. Nómina de Órgano de Administración y Nómina de Accionistas", descripcion: "Nómina de integrantes del órgano de administración o equivalente y Nómina de accionistas y porcentaje de participación." },
-  { id: 18, titulo: "18. DNI Firmante y Accionistas", descripcion: "Fotocopia DNI del firmante y accionistas." },
-  { id: 19, titulo: "19. DDJJ PEP Firmante, Accionistas y Fiadores", descripcion: "Declaración Jurada de Persona Expuesta Políticamente de firmantes, accionistas y fiadores." },
-  { id: 20, titulo: "20. DDJJ Licitud Fondos", descripcion: "Declaración Jurada de Licitud de uso de fondos." },
-  { id: 21, titulo: "21. DDJJ Beneficiario Final", descripcion: "Declaración Jurada de Beneficiario Final." },
-  { id: 22, titulo: "22. EECC e Informe de Auditor", descripcion: "2 últimos Estados Contables e Informe de Auditor (certificados por Colegio de Contadores)." },
-  { id: 23, titulo: "23. DDJJ IIBB / Convenio adicionales", descripcion: "Declaraciones juradas complementarias IIBB/Convenio." },
-  { id: 24, titulo: "24. DDJJ Ganancias complementarias", descripcion: "Declaraciones juradas complementarias de Ganancias." },
-  { id: 25, titulo: "25. Veraz / Nosis Empresa", descripcion: "Informe comercial de la empresa." },
-  { id: 26, titulo: "26. Veraz / Nosis Fiador/es", descripcion: "Informe comercial de fiadores." },
-  { id: 27, titulo: "27. Libre Deuda Previsional", descripcion: "Constancia de libre deuda previsional." },
-  { id: 28, titulo: "28. Fiador/es Solidario/s", descripcion: "DNI, Constancia de CUIT." },
-  { id: 29, titulo: "29. Contragarantía", descripcion: "En caso de hipoteca adjuntar cédula parcelaria, boleto de compra venta, tasación. En caso de prenda adjuntar título, informe de dominio y tasación." }
-];
+  { id: 6, titulo: "6. DNI Firmante y Accionistas", descripcion: "Fotocopia DNI del firmante y accionistas." },
+  { id: 7, titulo: "7. Acta Trámite FOGAJUY", descripcion: "Fotocopia de acta autorizando trámite ante FOGAJUY, firma de convenio y conformación de contragarantías (certificada y legalizada)." },
+  { id: 8, titulo: "8. DDJJ PEP Firmante, Accionistas y Fiadores", descripcion: "Declaración Jurada de Persona Expuesta Políticamente de firmantes, accionistas y fiadores." },
+  { id: 9, titulo: "9. Nómina de Órgano de Administración y Nómina de Accionistas", descripcion: "Nómina de integrantes del órgano de administración o equivalente y Nómina de accionistas y porcentaje de participación." },
+  { id: 10, titulo: "10. DDJJ Grupo Económico", descripcion: "Declaración Jurada de Grupo Económico." },
+  { id: 11, titulo: "11. DDJJ Ingresos y Deudas Post Balances", descripcion: "Declaración Jurada de Ingresos y Deudas Post Balances." },
+  { id: 12, titulo: "12. DDJJ Beneficiario Final", descripcion: "Declaración Jurada de Beneficiario Final." },
+  { id: 13, titulo: "13. DDJJ Licitud Fondos", descripcion: "Declaración Jurada de Licitud de uso de fondos." },
+  { id: 14, titulo: "14. Constancia AFIP", descripcion: "Inscripción en AFIP vigente." },
+  { id: 15, titulo: "15. Constancia Rentas", descripcion: "Inscripción provincial / Rentas." },
+  { id: 16, titulo: "16. DDJJ IIBB / Convenio (Últimos 12)", descripcion: "Declaraciones juradas de Ingresos Brutos/Convenio Multilateral del último año." },
+  { id: 17, titulo: "17. Constancia Regularización Fiscal Rentas", descripcion: "Certificado de libre deuda o regularización." },
+  { id: 18, titulo: "18. DDJJ Ganancias (Últimos 2)", descripcion: "Declaraciones juradas de Ganancias presentadas." },
+  { id: 19, titulo: "19. DDJJ Acciones / Bienes (Últimos 2)", descripcion: "Declaraciones de Acciones y/o Bienes Personales." },
+  { id: 20, titulo: "20. EECC e Informe de Auditor", descripcion: "2 últimos Estados Contables e Informe de Auditor (certificados por Colegio de Contadores)." },
+  { id: 21, titulo: "21. Veraz / Nosis Empresa", descripcion: "Informe comercial de la empresa." },
+  { id: 22, titulo: "22. Contragarantía", descripcion: "En caso de hipoteca adjuntar cédula parcelaria, boleto de compra venta, tasación. En caso de prenda adjuntar título, informe de dominio y tasación." },
+  { id: 23, titulo: "23. Fiador/es Solidario/s", descripcion: "DNI, Constancia de CUIT." },
+  { id: 24, titulo: "24. Veraz / Nosis Fiador/es", descripcion: "Informe comercial de fiadores." },
+  { id: 25, titulo: "25. Información Adicional", descripcion: "Planos, fotos, presupuestos, etc." },
+  { id: 26, titulo: "26. Flujo de Fondos", descripcion: "Proyección por plazo igual o superior a la vida del crédito." }
+  ];
+  
 
 export default function PersonaJuridica({ datosClienteProps }) {
   const location = useLocation();
@@ -87,10 +85,10 @@ export default function PersonaJuridica({ datosClienteProps }) {
   const handleAgregarPEPGenerado = (archivoPDF) => {
     if (!archivoPDF) return;
     setArchivos((prev) => {
-      const listaExistente = prev[19] || [];
+      const listaExistente = prev[11] || [];
       return {
         ...prev,
-        19: [...listaExistente, archivoPDF]
+        11: [...listaExistente, archivoPDF]
       };
     });
   };
@@ -131,10 +129,10 @@ export default function PersonaJuridica({ datosClienteProps }) {
   const handleAgregarLicitudGenerado = (archivoPDF) => {
     if (!archivoPDF) return;
     setArchivos((prev) => {
-      const listaExistente = prev[20] || [];
+      const listaExistente = prev[13] || [];
       return {
         ...prev,
-        20: [...listaExistente, archivoPDF]
+        13: [...listaExistente, archivoPDF]
       };
     });
   };
@@ -426,46 +424,17 @@ export default function PersonaJuridica({ datosClienteProps }) {
             </label>
           </div>
         );
-
-      case 7:
-        return (
-          <div style={{ display: 'flex', flexDirection: 'column', gap: '8px' }}>
-            <button 
-              type="button"
-              className="btn-upload" 
-              onClick={() => setIsModalGrupoOpen(true)}
-              style={{ backgroundColor: '#0284c7', color: '#fff', border: 'none' }}
-            >
-              {tieneArchivos ? '📝 Editar / Regenerar DDJJ' : '📝 Llenar y Generar DDJJ'}
-            </button>
-            <input
-              type="file"
-              id={`file-input-${item.id}`}
-              multiple
-              accept=".pdf,.doc,.docx,.jpg,.jpeg,.png"
-              onChange={(e) => handleAgregarArchivos(item.id, e)}
-              style={{ display: 'none' }}
-            />
-            <label 
-              htmlFor={`file-input-${item.id}`} 
-              className="btn-upload" 
-              style={{ background: '#f1f5f9', color: '#334155', cursor: 'pointer', textAlign: 'center' }}
-            >
-              📎 Adjuntar PDF / Escaneado externo
-            </label>
-          </div>
-        );
-
+      
       case 8:
         return (
           <div style={{ display: 'flex', flexDirection: 'column', gap: '8px' }}>
             <button 
               type="button"
               className="btn-upload" 
-              onClick={() => setIsModalDeudaOpen(true)}
+              onClick={() => setIsModalPEPOpen(true)}
               style={{ backgroundColor: '#0284c7', color: '#fff', border: 'none' }}
             >
-              {tieneArchivos ? '📝 Editar / Regenerar DDJJ' : '📝 Llenar y Generar DDJJ'}
+              📝 Generar DDJJ PEP para un Declarante
             </button>
             <input
               type="file"
@@ -475,75 +444,13 @@ export default function PersonaJuridica({ datosClienteProps }) {
               onChange={(e) => handleAgregarArchivos(item.id, e)}
               style={{ display: 'none' }}
             />
-            <label 
-              htmlFor={`file-input-${item.id}`} 
-              className="btn-upload" 
-              style={{ background: '#f1f5f9', color: '#334155', cursor: 'pointer', textAlign: 'center' }}
-            >
+            <label htmlFor={`file-input-${item.id}`} className="btn-upload" style={{ background: '#f1f5f9', color: '#334155', textAlign: 'center' }}>
               📎 Adjuntar PDF / Escaneado externo
             </label>
           </div>
         );
 
-      case 15:
-        return (
-          <div style={{ display: 'flex', flexDirection: 'column', gap: '8px' }}>
-            <button 
-              type="button"
-              className="btn-upload" 
-              onClick={() => setIsModalFlujoOpen(true)}
-              style={{ backgroundColor: '#0284c7', color: '#fff', border: 'none' }}
-            >
-              {tieneArchivos ? '📝 Editar / Regenerar Flujo' : '📝 Cargar Flujo de Fondos'}
-            </button>
-            <input
-              type="file"
-              id={`file-input-${item.id}`}
-              multiple
-              accept=".pdf,.doc,.docx,.xls,.xlsx,.jpg,.jpeg,.png"
-              onChange={(e) => handleAgregarArchivos(item.id, e)}
-              style={{ display: 'none' }}
-            />
-            <label 
-              htmlFor={`file-input-${item.id}`} 
-              className="btn-upload" 
-              style={{ background: '#f1f5f9', color: '#334155', cursor: 'pointer', textAlign: 'center' }}
-            >
-              📎 Adjuntar PDF / Excel externo
-            </label>
-          </div>
-        );
-
-      case 16:
-        return (
-          <div style={{ display: 'flex', flexDirection: 'column', gap: '8px' }}>
-            <button 
-              type="button"
-              className="btn-upload" 
-              onClick={() => setIsModalInfoAdicionalOpen(true)}
-              style={{ backgroundColor: '#0284c7', color: '#fff', border: 'none' }}
-            >
-              {tieneArchivos ? '📝 Editar / Regenerar Info Adicional' : '📝 Llenar y Generar Info Adicional'}
-            </button>
-            <input
-              type="file"
-              id={`file-input-${item.id}`}
-              multiple
-              accept=".pdf,.doc,.docx,.xls,.xlsx,.jpg,.jpeg,.png"
-              onChange={(e) => handleAgregarArchivos(item.id, e)}
-              style={{ display: 'none' }}
-            />
-            <label 
-              htmlFor={`file-input-${item.id}`} 
-              className="btn-upload" 
-              style={{ background: '#f1f5f9', color: '#334155', cursor: 'pointer', textAlign: 'center' }}
-            >
-              📎 Adjuntar PDF / Archivos externos
-            </label>
-          </div>
-        );
-
-      case 17:
+      case 9:
         return (
           <div style={{ display: 'flex', flexDirection: 'column', gap: '8px' }}>
             <button 
@@ -572,41 +479,18 @@ export default function PersonaJuridica({ datosClienteProps }) {
           </div>
         );
 
-      case 19:
-        return (
-          <div style={{ display: 'flex', flexDirection: 'column', gap: '8px' }}>
-            <button 
-              type="button"
-              className="btn-upload" 
-              onClick={() => setIsModalPEPOpen(true)}
-              style={{ backgroundColor: '#0284c7', color: '#fff', border: 'none' }}
-            >
-              📝 Generar DDJJ PEP para un Declarante
-            </button>
-            <input
-              type="file"
-              id={`file-input-${item.id}`}
-              multiple
-              accept=".pdf,.doc,.docx,.jpg,.jpeg,.png"
-              onChange={(e) => handleAgregarArchivos(item.id, e)}
-              style={{ display: 'none' }}
-            />
-            <label htmlFor={`file-input-${item.id}`} className="btn-upload" style={{ background: '#f1f5f9', color: '#334155', textAlign: 'center' }}>
-              📎 Adjuntar PDF / Escaneado externo
-            </label>
-          </div>
-        );
 
-      case 20:
+
+      case 10:
         return (
           <div style={{ display: 'flex', flexDirection: 'column', gap: '8px' }}>
             <button 
               type="button"
               className="btn-upload" 
-              onClick={() => setIsModalLicitudOpen(true)}
+              onClick={() => setIsModalGrupoOpen(true)}
               style={{ backgroundColor: '#0284c7', color: '#fff', border: 'none' }}
             >
-              📝 Generar DDJJ Licitud de Fondos
+              {tieneArchivos ? '📝 Editar / Regenerar DDJJ' : '📝 Llenar y Generar DDJJ'}
             </button>
             <input
               type="file"
@@ -625,7 +509,38 @@ export default function PersonaJuridica({ datosClienteProps }) {
             </label>
           </div>
         );
-      case 21:
+
+      case 11:
+        return (
+          <div style={{ display: 'flex', flexDirection: 'column', gap: '8px' }}>
+            <button 
+              type="button"
+              className="btn-upload" 
+              onClick={() => setIsModalDeudaOpen(true)}
+              style={{ backgroundColor: '#0284c7', color: '#fff', border: 'none' }}
+            >
+              {tieneArchivos ? '📝 Editar / Regenerar DDJJ' : '📝 Llenar y Generar DDJJ'}
+            </button>
+            <input
+              type="file"
+              id={`file-input-${item.id}`}
+              multiple
+              accept=".pdf,.doc,.docx,.jpg,.jpeg,.png"
+              onChange={(e) => handleAgregarArchivos(item.id, e)}
+              style={{ display: 'none' }}
+            />
+            <label 
+              htmlFor={`file-input-${item.id}`} 
+              className="btn-upload" 
+              style={{ background: '#f1f5f9', color: '#334155', cursor: 'pointer', textAlign: 'center' }}
+            >
+              📎 Adjuntar PDF / Escaneado externo
+            </label>
+          </div>
+        );
+
+
+      case 12:
         return (
           <div style={{ display: 'flex', flexDirection: 'column', gap: '8px' }}>
             <button 
@@ -653,6 +568,101 @@ export default function PersonaJuridica({ datosClienteProps }) {
             </label>
           </div>
         );
+
+      case 13:
+        return (
+          <div style={{ display: 'flex', flexDirection: 'column', gap: '8px' }}>
+            <button 
+              type="button"
+              className="btn-upload" 
+              onClick={() => setIsModalLicitudOpen(true)}
+              style={{ backgroundColor: '#0284c7', color: '#fff', border: 'none' }}
+            >
+              📝 Generar DDJJ Licitud de Fondos
+            </button>
+            <input
+              type="file"
+              id={`file-input-${item.id}`}
+              multiple
+              accept=".pdf,.doc,.docx,.jpg,.jpeg,.png"
+              onChange={(e) => handleAgregarArchivos(item.id, e)}
+              style={{ display: 'none' }}
+            />
+            <label 
+              htmlFor={`file-input-${item.id}`} 
+              className="btn-upload" 
+              style={{ background: '#f1f5f9', color: '#334155', cursor: 'pointer', textAlign: 'center' }}
+            >
+              📎 Adjuntar PDF / Escaneado externo
+            </label>
+          </div>
+        );
+
+
+      case 25:
+        return (
+          <div style={{ display: 'flex', flexDirection: 'column', gap: '8px' }}>
+            <button 
+              type="button"
+              className="btn-upload" 
+              onClick={() => setIsModalInfoAdicionalOpen(true)}
+              style={{ backgroundColor: '#0284c7', color: '#fff', border: 'none' }}
+            >
+              {tieneArchivos ? '📝 Editar / Regenerar Info Adicional' : '📝 Llenar y Generar Info Adicional'}
+            </button>
+            <input
+              type="file"
+              id={`file-input-${item.id}`}
+              multiple
+              accept=".pdf,.doc,.docx,.xls,.xlsx,.jpg,.jpeg,.png"
+              onChange={(e) => handleAgregarArchivos(item.id, e)}
+              style={{ display: 'none' }}
+            />
+            <label 
+              htmlFor={`file-input-${item.id}`} 
+              className="btn-upload" 
+              style={{ background: '#f1f5f9', color: '#334155', cursor: 'pointer', textAlign: 'center' }}
+            >
+              📎 Adjuntar PDF / Archivos externos
+            </label>
+          </div>
+        );
+
+
+      case 26:
+        return (
+          <div style={{ display: 'flex', flexDirection: 'column', gap: '8px' }}>
+            <button 
+              type="button"
+              className="btn-upload" 
+              onClick={() => setIsModalFlujoOpen(true)}
+              style={{ backgroundColor: '#0284c7', color: '#fff', border: 'none' }}
+            >
+              {tieneArchivos ? '📝 Editar / Regenerar Flujo' : '📝 Cargar Flujo de Fondos'}
+            </button>
+            <input
+              type="file"
+              id={`file-input-${item.id}`}
+              multiple
+              accept=".pdf,.doc,.docx,.xls,.xlsx,.jpg,.jpeg,.png"
+              onChange={(e) => handleAgregarArchivos(item.id, e)}
+              style={{ display: 'none' }}
+            />
+            <label 
+              htmlFor={`file-input-${item.id}`} 
+              className="btn-upload" 
+              style={{ background: '#f1f5f9', color: '#334155', cursor: 'pointer', textAlign: 'center' }}
+            >
+              📎 Adjuntar PDF / Excel externo
+            </label>
+          </div>
+        );
+
+      
+      
+      
+      
+      
 
       default:
         return (
@@ -788,7 +798,7 @@ export default function PersonaJuridica({ datosClienteProps }) {
         datosCliente={datosCliente}
         datosGuardados={datosNominaGuardados}
         onDocumentoGenerado={(reqId, archivoPdf, estadoFormulario) => {
-          handleDocumentoGenerado(17, archivoPdf);
+          handleDocumentoGenerado(9, archivoPdf);
           if (estadoFormulario) {
             setDatosNominaGuardados(estadoFormulario);
           }
@@ -815,7 +825,7 @@ export default function PersonaJuridica({ datosClienteProps }) {
         datosCliente={datosCliente}
         datosGuardados={datosBeneficiarioGuardados}
         onDocumentoGenerado={(archivoPdf, estadoFormulario) => {
-          handleDocumentoGenerado(21, archivoPdf);
+          handleDocumentoGenerado(12, archivoPdf);
           if (estadoFormulario) {
             setDatosBeneficiarioGuardados(estadoFormulario);
           }

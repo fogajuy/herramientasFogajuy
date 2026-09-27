@@ -278,7 +278,7 @@ export default function ModalDDJJDeudaPostBalance({
   return (
     <div className="modal-backdrop" style={{ position: 'fixed', inset: 0, backgroundColor: 'rgba(0,0,0,0.5)', display: 'flex', justifyContent: 'center', alignItems: 'center', zIndex: 1000 }}>
       <div className="modal-content" style={{ backgroundColor: '#fff', padding: '24px', borderRadius: '8px', width: '92%', maxWidth: '800px', maxHeight: '90vh', overflowY: 'auto' }}>
-        <h2 style={{ marginTop: 0, color: '#0284c7' }}>Declaración Jurada - Deuda Post Balance (Ítem 8)</h2>
+        <h2 style={{ marginTop: 0, color: '#0284c7' }}>Declaración Jurada - Deuda Post Balance (Ítem 11)</h2>
 
         {/* Datos Solicitante y Empresa */}
         <fieldset style={{ border: '1px solid #cbd5e1', borderRadius: '6px', padding: '12px', marginBottom: '16px' }}>
