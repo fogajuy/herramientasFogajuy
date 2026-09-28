@@ -69,6 +69,12 @@ export default function Home() {
           >
             Ir al Expediente
           </button>
+          <button 
+            className="home-card-btn" 
+            onClick={() => navigate("/anexarExpediente")}
+          >
+            Ir a Anexar Expediente
+          </button>
         </article>
         {/* <article className="home-card">
           <div>
