@@ -1,5 +1,6 @@
 // import React, { useState } from 'react';
 // import { PDFDocument, rgb, StandardFonts, degrees } from 'pdf-lib';
+// import JSZip from 'jszip';
 // import { useLocation, useNavigate } from 'react-router-dom';
 // import Navbar from '../navBar/navBar';
 // import ModalNotaSolicitudFisica from '../helpers/modalNotaSolicitudFisica';
@@ -31,7 +32,6 @@
 //   { id: 19, titulo: "19. Veraz / Nosis Fiador/es", descripcion: "Informe comercial Veraz/Nosis u otros de fiadores." },
 //   { id: 20, titulo: "20. Información Adicional", descripcion: "Planos, fotos, presupuestos, etc." },
 //   { id: 21, titulo: "21. Flujo de Fondos", descripcion: "Proyección por plazo igual o superior a la vida del crédito." },
-   
 // ];
 
 // export default function PersonaFisica({ datosClienteProps }) {
@@ -133,6 +133,44 @@
 //   const RequisitosCompletados = Object.keys(archivos).length;
 //   const porcentajeProgreso = Math.round((RequisitosCompletados / totalRequisitos) * 100);
 
+//   // NUEVA FUNCIÓN: Generar y descargar archivo ZIP con archivos originales ordenados
+//   const handleGenerarZip = async () => {
+//     try {
+//       const zip = new JSZip();
+//       const nombreClienteLimpio = (datosCliente?.nombre || datosCliente?.nombreApellido || 'Cliente').replace(/[/\\?%*:|"<>]/g, '_');
+
+//       for (const reqId of Object.keys(archivos)) {
+//         const listaArchivos = archivos[reqId];
+//         const requisitoInfo = REQUISITOS_FISICA.find(r => r.id === Number(reqId));
+//         const tituloCarpeta = requisitoInfo ? `${reqId}_${requisitoInfo.titulo.replace(/[/\\?%*:|"<>]/g, '')}` : `Item_${reqId}`;
+
+//         const carpetaReq = zip.folder(tituloCarpeta);
+
+//         for (let i = 0; i < listaArchivos.length; i++) {
+//           const archivo = listaArchivos[i];
+//           const arrayBuffer = await archivo.arrayBuffer();
+//           const nombreArchivo = archivo.name || `documento_${i + 1}.pdf`;
+//           carpetaReq.file(nombreArchivo, arrayBuffer);
+//         }
+//       }
+
+//       const contenidoZip = await zip.generateAsync({ type: 'blob' });
+//       const urlZip = URL.createObjectURL(contenidoZip);
+
+//       const link = document.createElement('a');
+//       link.href = urlZip;
+//       link.download = `Archivos_Originales_${nombreClienteLimpio}.zip`;
+//       document.body.appendChild(link);
+//       link.click();
+//       document.body.removeChild(link);
+//       URL.revokeObjectURL(urlZip);
+
+//     } catch (error) {
+//       console.error('Error al generar el ZIP:', error);
+//       alert('Ocurrió un error al empaquetar los archivos en el ZIP.');
+//     }
+//   };
+
 //   const handleGenerar = async () => {
 //     try {
 //       const pdfFinal = await PDFDocument.create();
@@ -165,6 +203,8 @@
 
 //       for (const reqId of Object.keys(archivos)) {
 //         const listaArchivos = archivos[reqId];
+//         const requisitoInfo = REQUISITOS_FISICA.find(r => r.id === Number(reqId));
+//         const tituloReq = requisitoInfo ? requisitoInfo.titulo : `Ítem ${reqId}`;
 
 //         for (const archivo of listaArchivos) {
 //           if (archivo.type === 'application/pdf') {
@@ -177,13 +217,133 @@
 
 //             paginasAdjuntas += paginasCopiadas.length;
 //             arrayBuffersGuardados.push(paginasCopiadas);
+
+//           } else if (archivo.type === 'image/jpeg' || archivo.type === 'image/jpg' || archivo.type === 'image/png') {
+//             const imageBytes = await archivo.arrayBuffer();
+//             let embeddedImage;
+//             if (archivo.type === 'image/png') {
+//               embeddedImage = await pdfFinal.embedPng(imageBytes);
+//             } else {
+//               embeddedImage = await pdfFinal.embedJpg(imageBytes);
+//             }
+
+//             const imgPage = pdfFinal.addPage([595.28, 841.89]);
+//             const { width, height } = imgPage.getSize();
+//             const imgDims = embeddedImage.scaleToFit(width - 100, height - 150);
+
+//             imgPage.drawText(`ADJUNTO - ${tituloReq}`, {
+//               x: 50,
+//               y: height - 40,
+//               size: 10,
+//               font: fontBold,
+//               color: rgb(0.2, 0.2, 0.2)
+//             });
+//             imgPage.drawText(`Archivo: ${archivo.name}`, {
+//               x: 50,
+//               y: height - 55,
+//               size: 8,
+//               font: fontHelvetica,
+//               color: rgb(0.4, 0.4, 0.4)
+//             });
+
+//             imgPage.drawImage(embeddedImage, {
+//               x: (width - imgDims.width) / 2,
+//               y: (height - imgDims.height) / 2 - 20,
+//               width: imgDims.width,
+//               height: imgDims.height,
+//             });
+
+//             paginasAdjuntas += 1;
+
+//           } else {
+//             const docPage = pdfFinal.addPage([595.28, 841.89]);
+//             let yPos = 750;
+
+//             docPage.drawText('FOGAJUY - CONSTANCIA DE DOCUMENTO ADJUNTO', {
+//               x: 50,
+//               y: yPos,
+//               size: 12,
+//               font: fontBold,
+//               color: rgb(0.1, 0.2, 0.4)
+//             });
+//             yPos -= 30;
+
+//             docPage.drawText(`Requisito: ${tituloReq}`, {
+//               x: 50,
+//               y: yPos,
+//               size: 10,
+//               font: fontBold
+//             });
+//             yPos -= 20;
+
+//             docPage.drawText(`Nombre del archivo original: ${archivo.name}`, {
+//               x: 50,
+//               y: yPos,
+//               size: 10,
+//               font: fontHelvetica
+//             });
+//             yPos -= 20;
+
+//             docPage.drawText(`Tipo de archivo: ${archivo.type || 'No especificado'}`, {
+//               x: 50,
+//               y: yPos,
+//               size: 10,
+//               font: fontHelvetica
+//             });
+//             yPos -= 40;
+
+//             docPage.drawRect({
+//               x: 50,
+//               y: yPos - 120,
+//               width: 495,
+//               height: 120,
+//               borderColor: rgb(0.7, 0.7, 0.7),
+//               borderWidth: 1,
+//               color: rgb(0.96, 0.96, 0.96)
+//             });
+
+//             docPage.drawText('NOTA INFORMATIVA:', {
+//               x: 70,
+//               y: yPos - 35,
+//               size: 10,
+//               font: fontBold,
+//               color: rgb(0.3, 0.3, 0.3)
+//             });
+
+//             docPage.drawText('Este documento corresponde a un formato editable o planilla de oficina', {
+//               x: 70,
+//               y: yPos - 60,
+//               size: 9,
+//               font: fontHelvetica,
+//               color: rgb(0.3, 0.3, 0.3)
+//             });
+//             docPage.drawText('que fue aportado por el cliente para este ítem del expediente y se encuentra', {
+//               x: 70,
+//               y: yPos - 75,
+//               size: 9,
+//               font: fontHelvetica,
+//               color: rgb(0.3, 0.3, 0.3)
+//             });
+//             docPage.drawText('disponible en los registros del analista para su revisión digital complementaria.', {
+//               x: 70,
+//               y: yPos - 90,
+//               size: 9,
+//               font: fontHelvetica,
+//               color: rgb(0.3, 0.3, 0.3)
+//             });
+
+//             paginasAdjuntas += 1;
 //           }
 //         }
 //       }
 
+//       arrayBuffersGuardados.forEach((paginas) => {
+//         paginas.forEach((pagina) => pdfFinal.addPage(pagina));
+//       });
+
 //       const totalPaginasFinal = 1 + paginasAdjuntas;
 
-//       const reportPage = pdfFinal.addPage([595.28, 841.89]);
+//       const reportPage = pdfFinal.insertPage(0, [595.28, 841.89]);
 //       let y = 790;
 
 //       reportPage.drawText('FOGAJUY - REPORTE DE ESTADO DE EXPEDIENTE', {
@@ -273,11 +433,7 @@
 //         color: rgb(0.4, 0.4, 0.4)
 //       });
 
-//       arrayBuffersGuardados.forEach((paginas) => {
-//         paginas.forEach((pagina) => pdfFinal.addPage(pagina));
-//       });
-
-//       // --- APLICACIÓN DEL SELLO CIRCULAR DE FOLIADO A TODAS LAS PÁGINAS ---
+//       // --- APLICACIÓN DEL SELLO CIRCULAR DE FOLIADO SÓLO AL EXPEDIENTE COMPILADO ---
 //       const paginasTodas = pdfFinal.getPages();
 //       paginasTodas.forEach((pagina, index) => {
 //         const { width, height } = pagina.getSize();
@@ -286,7 +442,6 @@
 //         const centerY = height - 45;
 //         const radius = 26;
 
-//         // 1. Círculo exterior
 //         pagina.drawCircle({
 //           x: centerX,
 //           y: centerY,
@@ -295,7 +450,6 @@
 //           borderColor: rgb(0, 0, 0)
 //         });
 
-//         // 2. Arco superior "FOGAJUY"
 //         const textoArco = 'FOGAJUY';
 //         const radiusArc = 19;
 //         const angleStep = 18;
@@ -320,7 +474,6 @@
 //           });
 //         }
 
-//         // 3. Número central de foliado
 //         const numeroTexto = String(index + 1);
 //         const numWidth = fontBold.widthOfTextAtSize(numeroTexto, 14);
 
@@ -516,13 +669,24 @@
 //         </div>
 //       </section>
 
-//       <footer className="fisica-footer">
+//       {/* FOOTER CON AMBAS OPCIONES */}
+//       <footer className="fisica-footer" style={{ display: 'flex', gap: '15px', justifyContent: 'center', flexWrap: 'wrap' }}>
 //         <button
 //           className="btn-generar-expediente"
 //           disabled={RequisitosCompletados === 0}
 //           onClick={handleGenerar}
+//           style={{ backgroundColor: '#1b365d' }}
 //         >
-//           Compilar y Generar Expediente Completo (PDF A4) →
+//           📄 Compilar Expediente Oficial (PDF con Foliado) →
+//         </button>
+
+//         <button
+//           className="btn-generar-expediente"
+//           disabled={RequisitosCompletados === 0}
+//           onClick={handleGenerarZip}
+//           style={{ backgroundColor: '#2e7d32' }}
+//         >
+//           📦 Descargar ZIP con Archivos Originales →
 //         </button>
 //       </footer>
 
@@ -699,7 +863,6 @@ export default function PersonaFisica({ datosClienteProps }) {
   const RequisitosCompletados = Object.keys(archivos).length;
   const porcentajeProgreso = Math.round((RequisitosCompletados / totalRequisitos) * 100);
 
-  // NUEVA FUNCIÓN: Generar y descargar archivo ZIP con archivos originales ordenados
   const handleGenerarZip = async () => {
     try {
       const zip = new JSZip();
@@ -999,13 +1162,15 @@ export default function PersonaFisica({ datosClienteProps }) {
         color: rgb(0.4, 0.4, 0.4)
       });
 
-      // --- APLICACIÓN DEL SELLO CIRCULAR DE FOLIADO SÓLO AL EXPEDIENTE COMPILADO ---
+      // --- APLICACIÓN DEL SELLO CIRCULAR DE FOLIADO CON DETECCIÓN DE ORIENTACIÓN HORIZONTAL ---
       const paginasTodas = pdfFinal.getPages();
       paginasTodas.forEach((pagina, index) => {
         const { width, height } = pagina.getSize();
+        const esHorizontal = width > height;
 
-        const centerX = width - 45;
-        const centerY = height - 45;
+        // Ajuste dinámico de posición según orientación
+        const centerX = esHorizontal ? width - 45 : width - 45;
+        const centerY = esHorizontal ? height - 45 : height - 45;
         const radius = 26;
 
         pagina.drawCircle({
@@ -1235,7 +1400,6 @@ export default function PersonaFisica({ datosClienteProps }) {
         </div>
       </section>
 
-      {/* FOOTER CON AMBAS OPCIONES */}
       <footer className="fisica-footer" style={{ display: 'flex', gap: '15px', justifyContent: 'center', flexWrap: 'wrap' }}>
         <button
           className="btn-generar-expediente"
@@ -1256,7 +1420,6 @@ export default function PersonaFisica({ datosClienteProps }) {
         </button>
       </footer>
 
-      {/* Modal Nota de Solicitud */}
       <ModalNotaSolicitudFisica
         isOpen={isModalOpen}
         onClose={() => setIsModalOpen(false)}
@@ -1265,7 +1428,6 @@ export default function PersonaFisica({ datosClienteProps }) {
         onDocumentoGenerado={handleDocumentoGeneradoModal}
       />
 
-      {/* Modal DDJJ PEP Persona Física */}
       <ModalDDJJPEPFisica
         isOpen={isModalPEPOpen}
         onClose={() => setIsModalPEPOpen(false)}
@@ -1273,7 +1435,6 @@ export default function PersonaFisica({ datosClienteProps }) {
         onDocumentoGenerado={handleDocumentoGeneradoPEP}
       />
 
-      {/* Modal Flujo de Fondos */}
       <ModalFlujoFondos
         isOpen={isModalFlujoOpen}
         onClose={() => setIsModalFlujoOpen(false)}
@@ -1282,7 +1443,6 @@ export default function PersonaFisica({ datosClienteProps }) {
         onDocumentoGenerado={handleDocumentoGeneradoFlujo}
       />
 
-      {/* Modal Información Adicional */}
       <ModalInformacionAdicional
         isOpen={isModalInfoOpen}
         onClose={() => setIsModalInfoOpen(false)}
