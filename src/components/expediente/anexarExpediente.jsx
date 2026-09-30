@@ -28,15 +28,12 @@
 //     setSegundoItemFiles(Array.from(e.target.files));
 //   };
 
-//   // Función auxiliar para convertir imágenes a PDF en formato A4
+//   // Función auxiliar para convertir imágenes a PDF respetando su orientación original
 //   const convertImageToPdf = async (file) => {
 //     const pdfDoc = await PDFDocument.create();
-//     const page = pdfDoc.addPage([595.28, 841.89]); // Tamaño A4 en puntos (72 DPI)
-//     const { width, height } = page.getSize();
-
-//     let imageEmbed;
 //     const arrayBuffer = await file.arrayBuffer();
 
+//     let imageEmbed;
 //     if (file.type === 'image/jpeg' || file.type === 'image/jpg') {
 //       imageEmbed = await pdfDoc.embedJpg(arrayBuffer);
 //     } else if (file.type === 'image/png') {
@@ -45,13 +42,21 @@
 //       throw new Error(`Formato de imagen no soportado: ${file.type}`);
 //     }
 
-//     // Escalar la imagen manteniendo proporciones dentro de A4
-//     const imgDims = imageEmbed.scaleToFit(width - 60, height - 60);
+//     const imgDims = imageEmbed.scale(1);
+//     // Si la imagen es más ancha que alta, se crea apaisada (horizontal)
+//     const isLandscape = imgDims.width > imgDims.height;
+//     const pageWidth = isLandscape ? 841.89 : 595.28;
+//     const pageHeight = isLandscape ? 595.28 : 841.89;
+
+//     const page = pdfDoc.addPage([pageWidth, pageHeight]);
+//     const { width, height } = page.getSize();
+
+//     const scaledDims = imageEmbed.scaleToFit(width - 60, height - 60);
 //     page.drawImage(imageEmbed, {
-//       x: (width - imgDims.width) / 2,
-//       y: (height - imgDims.height) / 2,
-//       width: imgDims.width,
-//       height: imgDims.height,
+//       x: (width - scaledDims.width) / 2,
+//       y: (height - scaledDims.height) / 2,
+//       width: scaledDims.width,
+//       height: scaledDims.height,
 //     });
 
 //     const pdfBytes = await pdfDoc.save();
@@ -136,7 +141,7 @@
 //       const mergedPdf = await PDFDocument.create();
 //       let folioActual = parseInt(numeroInicial, 10) || 1;
 
-//       // 1. Procesar el Primer Ítem (Se integran tal cual llegan, sin sello)
+//       // 1. Procesar el Primer Ítem (Preservando su orientación original)
 //       for (const file of primerItemFiles) {
 //         let donorDoc;
 //         if (file.type === 'application/pdf') {
@@ -150,12 +155,18 @@
 
 //         const copiedPages = await mergedPdf.copyPages(donorDoc, donorDoc.getPageIndices());
 //         for (const page of copiedPages) {
-//           page.setSize(595.28, 841.89); // Forzar tamaño A4
+//           const { width, height } = page.getSize();
+//           // Mantener horizontal si el ancho original supera al alto, sino vertical estándar
+//           if (width > height) {
+//             page.setSize(841.89, 595.28);
+//           } else {
+//             page.setSize(595.28, 841.89);
+//           }
 //           mergedPdf.addPage(page);
 //         }
 //       }
 
-//       // 2. Procesar el Segundo Ítem (Se integran y se les aplica el sello con texto curvo y negrita)
+//       // 2. Procesar el Segundo Ítem (Preservando orientación y aplicando sello)
 //       for (const file of segundoItemFiles) {
 //         let donorDoc;
 //         if (file.type === 'application/pdf') {
@@ -169,7 +180,12 @@
 
 //         const copiedPages = await mergedPdf.copyPages(donorDoc, donorDoc.getPageIndices());
 //         for (const page of copiedPages) {
-//           page.setSize(595.28, 841.89); // Asegurar A4
+//           const { width, height } = page.getSize();
+//           if (width > height) {
+//             page.setSize(841.89, 595.28);
+//           } else {
+//             page.setSize(595.28, 841.89);
+//           }
 //           await drawSelloFoliado(page, folioActual, mergedPdf);
 //           mergedPdf.addPage(page);
 //           folioActual++;
@@ -208,7 +224,7 @@
         
 //       <h2>Unión y Foliado de Expediente - FOGAJUY</h2>
 //       <p className="subtitle">
-//         Integre el expediente base (sin foliar) y agregue los nuevos documentos foliados automáticamente en formato A4.
+//         Integre el expediente base (sin foliar) y agregue los nuevos documentos foliados automáticamente respetando los formatos vertical y horizontal.
 //       </p>
 
 //       <form onSubmit={procesarExpediente} className="anexar-form">
@@ -283,6 +299,7 @@
 
 // export default AnexarExpediente;
 
+
 import React, { useState } from 'react';
 import { PDFDocument, StandardFonts, rgb } from 'pdf-lib';
 import Navbar from '../navBar/navBar';
@@ -351,9 +368,11 @@ const AnexarExpediente = () => {
   // Función para dibujar el sello circular institucional con texto curvo y negrita
   const drawSelloFoliado = async (page, numeroFoliado, pdfDoc) => {
     const { width, height } = page.getSize();
-    const centerX = width - 45;
-    const centerY = height - 45;
-    const radius = 28;
+    // Detección de página horizontal para ajustar la posición del sello si es necesario
+    const esHorizontal = width > height;
+    const centerX = esHorizontal ? width - 45 : width - 50;
+    const centerY = esHorizontal ? height - 45 : height - 50;
+    const radius = 26;
 
     // Incrustar fuente en negrita
     const fontBold = await pdfDoc.embedStandardFont(StandardFonts.HelveticaBold);
@@ -369,36 +388,43 @@ const AnexarExpediente = () => {
 
     // Texto curvo superior "FOGAJUY" siguiendo el arco del círculo
     const text = 'FOGAJUY';
-    const fontSize = 7.5;
-    const textRadius = radius - 8; // Radio interno para el arco de las letras
-    const startAngle = Math.PI * 0.78; // Ángulo de inicio (superior izquierdo)
-    const angleStep = (Math.PI * 0.56) / (text.length - 1); // Espaciado entre letras
+    const fontSize = 7;
+    const textRadius = radius - 8; 
+    const angleStep = 18;
+    const startAngle = 90 + ((text.length - 1) / 2) * angleStep; 
 
-    for (let i = 0; i < text.length; i++) {
-      const char = text[i];
-      const angle = startAngle - i * angleStep;
-      const x = centerX + textRadius * Math.cos(angle);
-      const y = centerY + textRadius * Math.sin(angle);
-      const rotation = angle - Math.PI / 2; // Rotación tangencial para acompañar la curva
+    for (let j = 0; j < text.length; j++) {
+      const char = text[j];
+      const thetaDeg = startAngle - (j * angleStep);
+      const thetaRad = thetaDeg * (Math.PI / 180);
+
+      const x = centerX + textRadius * Math.cos(thetaRad);
+      const yPos = centerY + textRadius * Math.sin(thetaRad);
+
+      const charWidth = fontBold.widthOfTextAtSize(char, fontSize);
+      const baselineAngleRad = (thetaDeg - 90) * (Math.PI / 180);
+      
+      const offsetX = - (charWidth / 2) * Math.cos(baselineAngleRad);
+      const offsetY = - (charWidth / 2) * Math.sin(baselineAngleRad);
 
       page.drawText(char, {
-        x: x,
-        y: y,
+        x: x + offsetX,
+        y: yPos + offsetY,
         size: fontSize,
         font: fontBold,
         color: rgb(0, 0, 0),
-        rotate: { type: 'radians', angle: rotation },
+        rotate: { type: 'degrees', angle: thetaDeg - 90 },
       });
     }
 
     // Número de folio actual centrado y en negrita
     const numStr = String(numeroFoliado);
-    const numFontSize = 10.5;
+    const numFontSize = 14;
     const numWidth = fontBold.widthOfTextAtSize(numStr, numFontSize);
 
     page.drawText(numStr, {
-      x: centerX - numWidth / 2,
-      y: centerY - 7,
+      x: centerX - (numWidth / 2),
+      y: centerY - 5,
       size: numFontSize,
       font: fontBold,
       color: rgb(0, 0, 0),
@@ -426,7 +452,7 @@ const AnexarExpediente = () => {
       const mergedPdf = await PDFDocument.create();
       let folioActual = parseInt(numeroInicial, 10) || 1;
 
-      // 1. Procesar el Primer Ítem (Preservando su orientación original)
+      // 1. Procesar el Primer Ítem (Preservando las dimensiones y proporciones originales)
       for (const file of primerItemFiles) {
         let donorDoc;
         if (file.type === 'application/pdf') {
@@ -440,18 +466,11 @@ const AnexarExpediente = () => {
 
         const copiedPages = await mergedPdf.copyPages(donorDoc, donorDoc.getPageIndices());
         for (const page of copiedPages) {
-          const { width, height } = page.getSize();
-          // Mantener horizontal si el ancho original supera al alto, sino vertical estándar
-          if (width > height) {
-            page.setSize(841.89, 595.28);
-          } else {
-            page.setSize(595.28, 841.89);
-          }
           mergedPdf.addPage(page);
         }
       }
 
-      // 2. Procesar el Segundo Ítem (Preservando orientación y aplicando sello)
+      // 2. Procesar el Segundo Ítem (Preservando proporciones y aplicando sello)
       for (const file of segundoItemFiles) {
         let donorDoc;
         if (file.type === 'application/pdf') {
@@ -465,12 +484,6 @@ const AnexarExpediente = () => {
 
         const copiedPages = await mergedPdf.copyPages(donorDoc, donorDoc.getPageIndices());
         for (const page of copiedPages) {
-          const { width, height } = page.getSize();
-          if (width > height) {
-            page.setSize(841.89, 595.28);
-          } else {
-            page.setSize(595.28, 841.89);
-          }
           await drawSelloFoliado(page, folioActual, mergedPdf);
           mergedPdf.addPage(page);
           folioActual++;
