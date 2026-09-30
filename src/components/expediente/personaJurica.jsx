@@ -36,15 +36,16 @@ const REQUISITOS_JURIDICA = [
   { id: 15, titulo: "15. Constancia Rentas", descripcion: "Inscripción provincial / Rentas." },
   { id: 16, titulo: "16. DDJJ IIBB / Convenio (Últimos 12)", descripcion: "Declaraciones juradas de Ingresos Brutos/Convenio Multilateral del último año." },
   { id: 17, titulo: "17. Constancia Regularización Fiscal Rentas", descripcion: "Certificado de libre deuda o regularización." },
-  { id: 18, titulo: "18. DDJJ Ganancias (Últimos 2)", descripcion: "Declaraciones juradas de Ganancias presentadas." },
-  { id: 19, titulo: "19. DDJJ Acciones / Bienes (Últimos 2)", descripcion: "Declaraciones de Acciones y/o Bienes Personales." },
-  { id: 20, titulo: "20. EECC e Informe de Auditor", descripcion: "2 últimos Estados Contables e Informe de Auditor (certificados por Colegio de Contadores)." },
-  { id: 21, titulo: "21. Veraz / Nosis Empresa", descripcion: "Informe comercial de la empresa." },
-  { id: 22, titulo: "22. Contragarantía", descripcion: "En caso de hipoteca adjuntar cédula parcelaria, boleto de compra venta, tasación. En caso de prenda adjuntar título, informe de dominio y tasación." },
-  { id: 23, titulo: "23. Fiador/es Solidario/s", descripcion: "DNI, Constancia de CUIT." },
-  { id: 24, titulo: "24. Veraz / Nosis Fiador/es", descripcion: "Informe comercial de fiadores." },
-  { id: 25, titulo: "25. Información Adicional", descripcion: "Planos, fotos, presupuestos, etc." },
-  { id: 26, titulo: "26. Flujo de Fondos", descripcion: "Proyección por plazo igual o superior a la vida del crédito." }
+  { id: 18, titulo: "18. Libre Deuda Previsional", descripcion: "Certificado de libre deuda o regularización o formulario F522A." },
+  { id: 19, titulo: "19. DDJJ Ganancias (Últimos 2)", descripcion: "Declaraciones juradas de Ganancias presentadas." },
+  { id: 20, titulo: "20. DDJJ Acciones / Bienes (Últimos 2)", descripcion: "Declaraciones de Acciones y/o Bienes Personales." },
+  { id: 21, titulo: "21. EECC e Informe de Auditor", descripcion: "2 últimos Estados Contables e Informe de Auditor (certificados por Colegio de Contadores)." },
+  { id: 22, titulo: "22. Veraz / Nosis Empresa", descripcion: "Informe comercial de la empresa." },
+  { id: 23, titulo: "23. Contragarantía", descripcion: "En caso de hipoteca adjuntar cédula parcelaria, boleto de compra venta, tasación. En caso de prenda adjuntar título, informe de dominio y tasación." },
+  { id: 24, titulo: "24. Fiador/es Solidario/s", descripcion: "DNI, Constancia de CUIT." },
+  { id: 25, titulo: "22. Veraz / Nosis Fiador/es", descripcion: "Informe comercial de fiadores." },
+  { id: 26, titulo: "26. Información Adicional", descripcion: "Planos, fotos, presupuestos, etc." },
+  { id: 27, titulo: "27. Flujo de Fondos", descripcion: "Proyección por plazo igual o superior a la vida del crédito." }
 ];
 
 const FORMATOS_PERMITIDOS = [
@@ -266,276 +267,7 @@ export default function PersonaJuridica({ datosClienteProps }) {
     }
   };
 
-  // Función Principal de Compilación PDF con validación y alerta para Word/Excel
-  // const handleGenerar = async () => {
-  //   try {
-  //     // 1. Detectar si existen archivos Excel o Word en el checklist actual
-  //     const archivosNoCompilables = [];
-      
-  //     Object.keys(archivos).forEach((reqId) => {
-  //       const lista = archivos[reqId];
-  //       const reqInfo = REQUISITOS_JURIDICA.find(r => r.id === Number(reqId));
-        
-  //       lista.forEach(file => {
-  //         const nameLower = file.name.toLowerCase();
-  //         const esExcelOrWord = nameLower.endsWith('.xls') || 
-  //                               nameLower.endsWith('.xlsx') || 
-  //                               nameLower.endsWith('.doc') || 
-  //                               nameLower.endsWith('.docx');
-          
-  //         if (esExcelOrWord) {
-  //           archivosNoCompilables.push(`• [Ít. ${reqInfo?.titulo || reqId}] ${file.name}`);
-  //         }
-  //       });
-  //     });
-
-  //     if (archivosNoCompilables.length > 0) {
-  //       const confirmar = window.confirm(
-  //         `⚠️ Atención: Archivos no compatibles con el visor PDF\n\n` +
-  //         `Se detectaron los siguientes archivos de Word o Excel que no pueden ser integrados directamente dentro de la compilación en PDF:\n\n` +
-  //         `${archivosNoCompilables.join('\n')}\n\n` +
-  //         `💡 Solución: Puede descargarlos todos juntos usando el botón "Descargar Todos los Archivos (ZIP)", o bien eliminar estos archivos específicos del checklist para poder generar el expediente PDF completo.`
-  //       );
-  //       return;
-  //     }
-
-  //     const pdfFinal = await PDFDocument.create();
-  //     const fontHelvetica = await pdfFinal.embedFont(StandardFonts.Helvetica);
-  //     const fontBold = await pdfFinal.embedFont(StandardFonts.HelveticaBold);
-
-  //     const cumplidos = [];
-  //     const faltantes = [];
-
-  //     REQUISITOS_JURIDICA.forEach((item) => {
-  //       const tieneFiles = archivos[item.id] && archivos[item.id].length > 0;
-  //       if (tieneFiles) {
-  //         cumplidos.push(item);
-  //       } else {
-  //         faltantes.push(item);
-  //       }
-  //     });
-
-  //     const totalReq = REQUISITOS_JURIDICA.length;
-  //     const totalCumplidos = cumplidos.length;
-  //     const porcentaje = Math.round((totalCumplidos / totalReq) * 100);
-  //     const fechaHora = new Date().toLocaleString('es-AR', {
-  //       dateStyle: 'long',
-  //       timeStyle: 'medium'
-  //     });
-
-  //     // Página inicial del Reporte
-  //     const reportPage = pdfFinal.addPage([595.28, 841.89]);
-  //     let y = 790;
-
-  //     reportPage.drawText('FOGAJUY - REPORTE DE ESTADO DE EXPEDIENTE', {
-  //       x: 50,
-  //       y,
-  //       size: 14,
-  //       font: fontBold,
-  //       color: rgb(0.1, 0.2, 0.4)
-  //     });
-  //     y -= 25;
-
-  //     reportPage.drawText('EXPEDIENTE COMPILADO - PERSONA JURÍDICA', {
-  //       x: 50,
-  //       y,
-  //       size: 11,
-  //       font: fontBold,
-  //       color: rgb(0.3, 0.3, 0.3)
-  //     });
-  //     y -= 15;
-
-  //     reportPage.drawLine({
-  //       start: { x: 50, y },
-  //       end: { x: 545, y },
-  //       thickness: 1,
-  //       color: rgb(0.8, 0.8, 0.8)
-  //     });
-  //     y -= 25;
-
-  //     const razonSocial = datosCliente?.razonSocial || datosCliente?.nombre || 'No especificado';
-
-  //     reportPage.drawText(`Cliente / Razón Social: ${razonSocial}`, { x: 50, y, size: 10, font: fontBold });
-  //     y -= 15;
-  //     reportPage.drawText(`Fecha de Armado: ${fechaHora}`, { x: 50, y, size: 10, font: fontHelvetica });
-  //     y -= 15;
-  //     reportPage.drawText(`Estado del Checklist: ${totalCumplidos} de ${totalReq} ítems completados (${porcentaje}%)`, { x: 50, y, size: 10, font: fontHelvetica });
-  //     y -= 15;
-
-  //     // Anexar y Copiar los PDF adjuntos
-  //     let paginasAdjuntasCount = 0;
-
-  //     for (const reqId of Object.keys(archivos)) {
-  //       const listaArchivos = archivos[reqId];
-
-  //       for (const archivo of listaArchivos) {
-  //         const esPdf = archivo.type === 'application/pdf' || (archivo.name && archivo.name.toLowerCase().endsWith('.pdf'));
-
-  //         if (esPdf) {
-  //           try {
-  //             const arrayBuffer = await archivo.arrayBuffer();
-  //             const pdfAInsertar = await PDFDocument.load(arrayBuffer);
-  //             const paginasCopiadas = await pdfFinal.copyPages(
-  //               pdfAInsertar,
-  //               pdfAInsertar.getPageIndices()
-  //             );
-
-  //             paginasCopiadas.forEach((pagina) => {
-  //               pdfFinal.addPage(pagina);
-  //               paginasAdjuntasCount++;
-  //             });
-  //           } catch (err) {
-  //             console.warn(`No se pudo procesar el archivo ${archivo.name}:`, err);
-  //           }
-  //         }
-  //       }
-  //     }
-
-  //     const totalPaginasFinal = 1 + paginasAdjuntasCount;
-  //     reportPage.drawText(`Total de Páginas del Expediente: ${totalPaginasFinal} página(s)`, { 
-  //       x: 50, 
-  //       y, 
-  //       size: 10, 
-  //       font: fontBold, 
-  //       color: rgb(0.1, 0.4, 0.2) 
-  //     });
-  //     y -= 30;
-
-  //     reportPage.drawText(`REQUISITOS FALTANTES (${faltantes.length}):`, {
-  //       x: 50,
-  //       y,
-  //       size: 11,
-  //       font: fontBold,
-  //       color: rgb(0.7, 0.1, 0.1)
-  //     });
-  //     y -= 15;
-
-  //     if (faltantes.length === 0) {
-  //       reportPage.drawText('✓ Checklist 100% Completo. No se registran requisitos faltantes.', {
-  //         x: 60,
-  //         y,
-  //         size: 9,
-  //         font: fontHelvetica,
-  //         color: rgb(0, 0.5, 0)
-  //       });
-  //       y -= 15;
-  //     } else {
-  //       faltantes.forEach((item) => {
-  //         if (y > 60) {
-  //           reportPage.drawText(`• ${item.titulo}`, {
-  //             x: 60,
-  //             y,
-  //             size: 8.5,
-  //             font: fontHelvetica,
-  //             color: rgb(0.3, 0.3, 0.3)
-  //           });
-  //           y -= 13;
-  //         }
-  //       });
-  //     }
-
-  //     y -= 15;
-  //     reportPage.drawLine({
-  //       start: { x: 50, y },
-  //       end: { x: 545, y },
-  //       thickness: 1,
-  //       color: rgb(0.8, 0.8, 0.8)
-  //     });
-  //     y -= 25;
-
-  //     reportPage.drawText('DOCUMENTACIÓN ADJUNTA COMPILADA EN LAS PÁGINAS SIGUIENTES', {
-  //       x: 50,
-  //       y,
-  //       size: 9,
-  //       font: fontBold,
-  //       color: rgb(0.4, 0.4, 0.4)
-  //     });
-
-  //     // Foliado y numeración de hojas
-  //     const todasLasPaginas = pdfFinal.getPages();
-  //     const totalPages = todasLasPaginas.length;
-
-  //     for (let i = 0; i < totalPages; i++) {
-  //       const page = todasLasPaginas[i];
-  //       const { width, height } = page.getSize();
-        
-  //       const numeroPagina = String(i + 1);
-  //       const radioCirculo = 26;
-        
-  //       const centerX = width - 50;
-  //       const centerY = height - 50;
-
-  //       page.drawCircle({
-  //         x: centerX,
-  //         y: centerY,
-  //         size: radioCirculo,
-  //         borderColor: rgb(0, 0, 0),
-  //         borderWidth: 1.5,
-  //         color: undefined,
-  //       });
-
-  //       const fontSizeNum = 14;
-  //       const textWidthNum = fontBold.widthOfTextAtSize(numeroPagina, fontSizeNum);
-        
-  //       page.drawText(numeroPagina, {
-  //         x: centerX - (textWidthNum / 2),
-  //         y: centerY - 5,
-  //         size: fontSizeNum,
-  //         font: fontBold, 
-  //         color: rgb(0, 0, 0)
-  //       });
-
-  //       const textoLeyenda = "FOGAJUY";
-  //       const fontSizeLeyenda = 7;
-  //       const textRadius = radioCirculo - 8;
-        
-  //       const angleStep = 18;
-  //       const startAngle = 90 + ((textoLeyenda.length - 1) / 2) * angleStep; 
-
-  //       for (let j = 0; j < textoLeyenda.length; j++) {
-  //         const char = textoLeyenda[j];
-          
-  //         const thetaDeg = startAngle - (j * angleStep);
-  //         const thetaRad = thetaDeg * (Math.PI / 180);
-
-  //         const x = centerX + textRadius * Math.cos(thetaRad);
-  //         const y = centerY + textRadius * Math.sin(thetaRad);
-
-  //         const charWidth = fontBold.widthOfTextAtSize(char, fontSizeLeyenda);
-  //         const baselineAngleRad = (thetaDeg - 90) * (Math.PI / 180);
-          
-  //         const offsetX = - (charWidth / 2) * Math.cos(baselineAngleRad);
-  //         const offsetY = - (charWidth / 2) * Math.sin(baselineAngleRad);
-
-  //         page.drawText(char, {
-  //           x: x + offsetX,
-  //           y: y + offsetY,
-  //           size: fontSizeLeyenda,
-  //           font: fontBold,
-  //           color: rgb(0, 0, 0),
-  //           rotate: degrees(thetaDeg - 90),
-  //         });
-  //       }
-  //     }
-
-  //     const pdfBytes = await pdfFinal.save();
-  //     const blob = new Blob([pdfBytes], { type: 'application/pdf' });
-  //     const pdfUrl = URL.createObjectURL(blob);
-
-  //     navigate('/expedientePDF', {
-  //       state: {
-  //         pdfUrl: pdfUrl,
-  //         nombreArchivo: 'Expediente_Persona_Juridica.pdf'
-  //       }
-  //     });
-
-  //   } catch (error) {
-  //     console.error('Error al compilar el PDF:', error);
-  //     alert('Ocurrió un error al armar el expediente. Verificá que los archivos no estén dañados.');
-  //   }
-  // };
-
-  // Función Principal de Compilación PDF con validación y alerta para Word/Excel
+    // Función Principal de Compilación PDF con validación y alerta para Word/Excel
   const handleGenerar = async () => {
     try {
       // 1. Detectar si existen archivos Excel o Word en el checklist actual
@@ -1007,7 +739,7 @@ export default function PersonaJuridica({ datosClienteProps }) {
           </div>
         );
 
-      case 25:
+      case 26:
         return (
           <div style={{ display: 'flex', flexDirection: 'column', gap: '8px' }}>
             <button 
@@ -1036,7 +768,7 @@ export default function PersonaJuridica({ datosClienteProps }) {
           </div>
         );
 
-      case 26:
+      case 27:
         return (
           <div style={{ display: 'flex', flexDirection: 'column', gap: '8px' }}>
             <button 
